@@ -2,7 +2,7 @@
 
 Take a folder with a Dockerfile and shoot it in the cloud with a drop kick :)
 
-![dropkick](./dropkick.png)
+![drop kick](./drop-kick.png)
 
 This leverages the [Terraform CDK](https://cdk.tf) to provide an abstraction over docker registries and serverless Container runtimes of public Cloud providers. Currently it supports AWS and Google Cloud.
 
