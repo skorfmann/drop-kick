@@ -1,4 +1,4 @@
-# Drop Kick
+# Docker Drop Kick
 
 Take a folder with a Dockerfile and shoot it in the cloud with a drop kick :)
 
