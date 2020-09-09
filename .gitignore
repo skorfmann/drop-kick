@@ -6,3 +6,5 @@ terraform.tfstate*
 .gen
 .terraform
 !ambient.d.ts
+yarn-error*
+*.tgz

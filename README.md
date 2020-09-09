@@ -26,7 +26,7 @@ In case of Google Cloud, the example expects a valid login, e.g. `gcloud auth ap
 ## Quickstart
 
 ```
-npx drop-kick --target aws ./folder
+npx docker-drop-kick --target aws ./folder
 ```
 
 ## Development
