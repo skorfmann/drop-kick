@@ -41,3 +41,7 @@ npx drop-kick --target aws ./folder
 ```
  yarn examples:google:deploy
 ```
+
+## Credits
+
+<span>Photo by <a href="https://unsplash.com/@skucinic9?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Sven Kucinic</a> on <a href="https://unsplash.com/@skucinic9?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
