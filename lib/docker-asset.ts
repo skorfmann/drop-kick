@@ -1,5 +1,5 @@
 import { Construct, Node } from "constructs";
-import { TerraformOutput, Resource, TerraformResource, TerraformDataSource } from 'cdktf';
+import { TerraformOutput, Resource, TerraformResource, TerraformDataSource, TerraformElement } from 'cdktf';
 import * as Null from "@cdktf/provider-null";
 import * as hashdirectory from 'hashdirectory';
 import { IPrincipal } from '.'
@@ -14,7 +14,7 @@ export interface IImage {
 export interface IRepository {
   url: string;
   resource: TerraformResource;
-  data: TerraformDataSource;
+  dependable: TerraformDataSource | TerraformResource;
   authorizationPassword: string;
   authorizationUser: string;
 }
@@ -54,14 +54,13 @@ export class DockerAsset extends Resource implements IDockerAsset {
 
     if (providers['aws'].length > 0) {
       this.repository = new AwsEcrRepository(this, 'foo', repoConfig)
-      this.buildAndPush.addOverride('depends_on', [this.repository.data.fqn])
     } else if (providers['google'].length > 0) {
       this.repository = new GoogleContainerRepository(this, 'foo', repoConfig)
-      this.buildAndPush.addOverride('depends_on', [this.repository.resource.fqn])
     } else {
       throw new Error('Please add a supported provider')
     }
 
+    this.buildAndPush.addOverride('depends_on', [this.repository.dependable.fqn])
     this.dockerBuildCommand()
   }
 

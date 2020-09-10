@@ -10,7 +10,7 @@ export interface GoogleContainerRepositoryConfig {
 
 export class GoogleContainerRepository extends Resource implements IRepository {
   public readonly resource: ContainerRegistry;
-  public readonly data: DataGoogleClientConfig;
+  public readonly dependable: ContainerRegistry;
   public readonly url: string;
   public readonly authorizationPassword: string;
   public readonly authorizationUser: string;
@@ -18,10 +18,10 @@ export class GoogleContainerRepository extends Resource implements IRepository {
   constructor(scope: Construct, name: string, config: GoogleContainerRepositoryConfig) {
     super(scope, name);
 
-    this.data = new DataGoogleClientConfig(this, 'current')
+    const data = new DataGoogleClientConfig(this, 'current')
 
     const location = 'EU'
-    const project = this.data.project
+    const project = data.project
 
     this.resource = new ContainerRegistry(this, 'ecr-repository', {
       project,
@@ -34,8 +34,9 @@ export class GoogleContainerRepository extends Resource implements IRepository {
       dependsOn: [this.resource]
     })
 
-    this.authorizationPassword = this.data.accessToken
+    this.authorizationPassword = data.accessToken
     this.authorizationUser = 'oauth2accesstoken'
     this.url = `${repository.repositoryUrl}/${config.name}`;
+    this.dependable = this.resource
   }
 }

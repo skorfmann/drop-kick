@@ -9,7 +9,7 @@ export interface AwsEcrRepositoryConfig {
 
 export class AwsEcrRepository extends Resource implements IRepository {
   public readonly resource: EcrRepository;
-  public readonly data: DataAwsEcrAuthorizationToken;
+  public readonly dependable: DataAwsEcrAuthorizationToken;
   public readonly url: string;
   public readonly authorizationPassword: string;
   public readonly authorizationUser: string;
@@ -21,12 +21,13 @@ export class AwsEcrRepository extends Resource implements IRepository {
       name: config.name,
     });
 
-    this.data = new DataAwsEcrAuthorizationToken(this, 'ecr-repository-token', {
+    const data = new DataAwsEcrAuthorizationToken(this, 'ecr-repository-token', {
       dependsOn: [this.resource]
     })
 
-    this.authorizationPassword = this.data.password
-    this.authorizationUser = this.data.userName
+    this.authorizationPassword = data.password
+    this.authorizationUser = data.userName
     this.url = this.resource.repositoryUrl;
+    this.dependable = data
   }
 }
