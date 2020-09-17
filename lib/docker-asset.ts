@@ -6,6 +6,7 @@ import { IPrincipal } from '.'
 import { findProviders } from './utils'
 import { AwsEcrRepository } from './aws/ecr-repository'
 import { GoogleContainerRepository } from './google/registry'
+import { DockerImage } from './docker/image'
 
 export interface IImage {
   digest: string;
@@ -22,6 +23,7 @@ export interface IRepository {
 export interface IDockerAsset {
   repository: IRepository;
   workingDirectory: string;
+  dockerImage: DockerImage;
   grantPull(principal: IPrincipal): void;
 }
 
@@ -34,6 +36,7 @@ export class DockerAsset extends Resource implements IDockerAsset {
   public readonly repository: IRepository;
   public readonly workingDirectory: string;
   public readonly buildAndPush: Null.Resource;
+  public readonly dockerImage: DockerImage;
 
   constructor(scope: Construct, name: string, config: DockerAssetConfig) {
     super(scope, name);
@@ -62,6 +65,11 @@ export class DockerAsset extends Resource implements IDockerAsset {
 
     this.buildAndPush.addOverride('depends_on', [this.repository.dependable.fqn])
     this.dockerBuildCommand()
+
+    this.dockerImage = new DockerImage(this, 'image', {
+      repository: this.repository,
+      dependsOn: [this.buildAndPush]
+    })
   }
 
   public grantPull(principal: IPrincipal): void {

@@ -20,7 +20,7 @@ export class GoogleContainerRepository extends Resource implements IRepository {
 
     const data = new DataGoogleClientConfig(this, 'current')
 
-    const location = 'EU'
+    const location = 'eu'
     const project = data.project
 
     this.resource = new ContainerRegistry(this, 'ecr-repository', {

@@ -2,7 +2,8 @@ import { Construct } from 'constructs';
 import { TerraformStack } from 'cdktf';
 import { GoogleProvider } from '@cdktf/provider-google';
 import { DockerAsset } from '../lib';
-import {  StackConfig } from './stack-config'
+import { GoogleContainerService } from '../lib/google/container-service';
+import { StackConfig } from './stack-config'
 
 interface GoogleStackConfig extends StackConfig {
   project: string;
@@ -19,9 +20,14 @@ export class GoogleStack extends TerraformStack {
       project
     })
 
-    new DockerAsset(this, 'google-docker-asset', {
+    const dockerAsset = new DockerAsset(this, 'google-docker-asset', {
       name: name || 'google-demo',
       path
+    })
+
+    new GoogleContainerService(this, 'service', {
+      name: 'dropkick-test',
+      dockerAsset
     })
   }
 }
