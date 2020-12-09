@@ -40,7 +40,7 @@ export class DockerImage extends Resource implements IImage {
       code: async (args) => {
         const drc = require('docker-registry-client')
         return new Promise((resolve, reject) => {
-          var rar = drc.parseRepoAndRef((args as any).repository_url);
+          var rar = drc.parseRepoAndRef((args as any).repositoryUrl);
           var client = drc.createClientV2({
             repo: rar,
             insecure: false,
@@ -49,14 +49,11 @@ export class DockerImage extends Resource implements IImage {
             maxSchemaVersion: 2
           });
           var tagOrDigest = rar.tag || rar.digest;
-          client.getManifest({ref: tagOrDigest}, function (err:any, _manifest:any, res:any, manifestStr:any) {
+          client.getManifest({ref: tagOrDigest}, function (err:any, _manifest:any, _res:any, manifestStr:any) {
             client.close();
             if (err) {
               reject(err)
             }
-            console.error('# response headers');
-            console.error(JSON.stringify(res.headers, null, 4));
-            console.error('# manifest');
             resolve({sha256Digest: drc.digestFromManifestStr(manifestStr)});
           });
         });

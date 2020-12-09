@@ -2,6 +2,7 @@ import { Construct, } from "constructs";
 import {  Resource } from 'cdktf';
 import { EcrRepository, DataAwsEcrAuthorizationToken } from "@cdktf/provider-aws";
 import { IRepository } from '..';
+import { IPrincipal } from '../principal'
 
 export interface AwsEcrRepositoryConfig {
   name: string;
@@ -30,4 +31,15 @@ export class AwsEcrRepository extends Resource implements IRepository {
     this.url = this.resource.repositoryUrl;
     this.dependable = data
   }
+
+  public grantPull(principal: IPrincipal) {
+    const actions = [
+      'ecr:BatchCheckLayerAvailability',
+      'ecr:GetDownloadUrlForLayer',
+      'ecr:BatchGetImage'
+    ]
+    principal.grant('ecr-pull', actions, this.resource.arn)
+    principal.grant('ecr-login', ['ecr:GetAuthorizationToken'])
+  }
+
 }

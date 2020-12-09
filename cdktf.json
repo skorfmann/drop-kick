@@ -1,6 +1,6 @@
 {
   "language": "typescript",
   "terraformProviders": [
-    "external@~> 1"
+    "external@~> 2"
   ]
 }

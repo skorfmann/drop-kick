@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@cdktf/provider-aws@0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@cdktf/provider-aws/-/provider-aws-0.0.31.tgz#e8692854a819429bbae68a3ae0ecfe31f8bdb31b"
-  integrity sha512-Ca5J/Fh3cqxCYq1cV/RxYcf9qg7vITgCmCs1o2RoMJaFEnHVC0PdlGrJRw4FcLCzHNf+cyJESUpu+JGX7nfBGg==
+"@cdktf/provider-aws@^0.0.86":
+  version "0.0.86"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-aws/-/provider-aws-0.0.86.tgz#ae3c4d515c1c63673454e2817a99f8dd4c9abc74"
+  integrity sha512-rmDKdP6B5tSg8dPfEaMpEgU8MOB6QHH1RfGqUfSlxBnBVtyMKQoc+mz+RuLvH3O/bGKubK1j4edMqQ9yHo9IdQ==
 
 "@cdktf/provider-docker@^0.0.18":
   version "0.0.18"
@@ -21,6 +21,11 @@
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@cdktf/provider-null/-/provider-null-0.0.14.tgz#95432b7826eeaa1022a68f7dead2cfb5392c456e"
   integrity sha512-mwvk5/KR657MLUMR8gPxFD3zan5324uIX8eq4cXvbD1GvxNCoHUSrYAuEWnOpVYjopkJFM73/NKR0p7dykuPHg==
+
+"@eryldor/cidr@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@eryldor/cidr/-/cidr-1.0.5.tgz#37d4e09053d1ddd752c6124f43dc2a96691efeee"
+  integrity sha512-xywK4iR1mrQfWxDn2utFz4y9RYW6rYq76cxuc4+3t4ZHb3jrF4GvBJCuYYZJJOkuu97yMWur2445w2tdHvwHJg==
 
 "@jsii/spec@^1.12.0":
   version "1.12.0"
@@ -256,15 +261,15 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdktf-cli@0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.0.17.tgz#a0890c084c41168993924b94cda852176ae48aca"
-  integrity sha512-R/N4dUUMRoKWqso6S4kLAGeRHO3DtwhD3vsMcm/hFIOfzX1/uWqpM62Mc101xSyVwWaRuDfq1wrcg1ZmfnrABQ==
+cdktf-cli@0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.0.19.tgz#17f07af8b775ab86d138488e0733d72a0b540c8e"
+  integrity sha512-JH2DyIQyhpI8lwO4HANha/HiVV2MXVG63iK+PZbEZKJDEr3fVB0WSKvzrp66CarceLiuNy7Z5cIR+81Q6eMx+w==
   dependencies:
     "@types/node" "^14.0.26"
     "@types/readline-sync" "^1.4.3"
     "@types/uuid" "^8.3.0"
-    cdktf "0.0.17"
+    cdktf "0.0.19"
     chalk "^4.1.0"
     codemaker "^0.22.0"
     constructs "^3.0.0"
@@ -283,36 +288,10 @@ cdktf-cli@0.0.17:
     uuid "^8.3.0"
     yargs "^15.1.0"
 
-"cdktf-cli@file:./../terraform-cdk/dist/js/cdktf-cli-0.0.0.tgz":
-  version "0.0.0"
-  resolved "file:./../terraform-cdk/dist/js/cdktf-cli-0.0.0.tgz#865c0bea8bf512ff5e7cbe4d7501cb604babb12f"
-  dependencies:
-    "@types/node" "^14.0.26"
-    "@types/readline-sync" "^1.4.3"
-    "@types/uuid" "^8.3.0"
-    cdktf "0.0.0"
-    chalk "^4.1.0"
-    codemaker "^0.22.0"
-    constructs "^3.0.0"
-    eslint-plugin-react "^7.20.0"
-    fs-extra "^8.1.0"
-    ink "^2.7.1"
-    ink-confirm-input "^2.0.0"
-    ink-spinner "^3.0.1"
-    jsii-srcmak "^0.1.22"
-    log4js "^6.3.0"
-    open "^7.0.4"
-    react "^16.13.1"
-    readline-sync "^1.4.10"
-    semver "^7.3.2"
-    sscaff "^1.2.0"
-    uuid "^8.3.0"
-    yargs "^15.1.0"
-
-cdktf@0.0.0, cdktf@0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.0.17.tgz#9fae8203447ff5d7421d70d639b7f0aec9e2ee2d"
-  integrity sha512-01SDFLHu19S7ZFGkDKQ60pMe4jzWyHeUE7R8ujyOppT8SYrP+yJtw7Fr0/Kk3qfuFOGxicT8220MKXdp1iJJyA==
+cdktf@0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.0.19.tgz#511883387558b20aa6543dbb33f541d2b4798906"
+  integrity sha512-fBOl+yqMdMNRGNvLwAxOpE38PxHJG5Tdi/3J/Ag+KJwaDEXa/v5+ogwPxNtZ0dUdvZq2ovti9zbhdIPr59BvYQ==
   dependencies:
     json-stable-stringify "^1.0.1"
 

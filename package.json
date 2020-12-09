@@ -26,18 +26,19 @@
     "node": ">=10.12"
   },
   "dependencies": {
-    "@cdktf/provider-aws": "0.0.31",
+    "@cdktf/provider-aws": "^0.0.86",
     "@cdktf/provider-docker": "^0.0.18",
     "@cdktf/provider-google": "^0.0.13",
     "@cdktf/provider-null": "^0.0.14",
-    "cdktf": "0.0.0",
+    "@eryldor/cidr": "^1.0.5",
+    "cdktf": "0.0.19",
     "constructs": "^3.0.4",
     "docker-registry-client": "^3.3.0",
     "hashdirectory": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^14.6.3",
-    "cdktf-cli": "file:./../terraform-cdk/dist/js/cdktf-cli-0.0.0.tgz",
+    "cdktf-cli": "0.0.19",
     "typescript": "^4.0.2"
   }
 }

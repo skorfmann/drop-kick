@@ -72,8 +72,7 @@ export class DockerAsset extends Resource implements IDockerAsset {
     })
   }
 
-  public grantPull(principal: IPrincipal): void {
-    console.log({principal})
+  public grantPull(_principal: IPrincipal): void {
   }
 
   protected addOutput(): void {
